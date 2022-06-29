@@ -2,6 +2,7 @@ import argparse
 from hashlib import md5
 from pathlib import Path
 import multiprocessing
+import shutil
 
 from generators import WaPoGenerator, KILTGenerator, MARCOGenerator
 from passage_chunkers import PassageChunker
@@ -15,7 +16,7 @@ parser.add_argument(
     '--kilt_collection',
     type=str,
     # if collection dowloaded with bash script
-    default="files/raw_collection/kilt_knowledgesource.json",
+    default="/content/files/raw_collection/kilt_knowledgesource.json",
     help="Path to the raw KILT collection"
 )
 
@@ -23,7 +24,7 @@ parser.add_argument(
 parser.add_argument(
     '--marco_v2_collection',
     type=str,
-    default="files/raw_collection/msmarco_v2_doc.tar",
+    default="/content/files/raw_collection/msmarco_v2_doc.tar",
     help="Path to compressed MARCO V2 collection"
 )
 
@@ -31,7 +32,7 @@ parser.add_argument(
 parser.add_argument(
     '--wapo_collection',
     type=str,
-    default="files/raw_collection/WashingtonPost.v4.tar.gz",
+    default="/content/files/raw_collection/WashingtonPost.v4.tar.gz",
     help="Path to compressed WaPo collection"
 )
 
@@ -39,16 +40,16 @@ parser.add_argument(
 parser.add_argument(
     '--duplicates_file',
     type=str,
-    default="files/duplicates_file/all_duplicates.txt",
+    default="/content/files/duplicates_file/all_duplicates.txt",
     help="Path to duplicates file"
 )
 
-parser.add_argument('--batch_size', type=int, default=100000,
+parser.add_argument('--batch_size', type=int, default=10000,
                     help="Number of documents per batch")
-parser.add_argument('--skip_process_kilt', default=False, action='store_true')
+parser.add_argument('--skip_process_kilt', default=True, action='store_true')
 parser.add_argument('--skip_process_marco', default=False, action='store_true')
-parser.add_argument('--skip_process_wapo', default=False, action='store_true')
-parser.add_argument('--output_dir', type=str, default="files",
+parser.add_argument('--skip_process_wapo', default=True, action='store_true')
+parser.add_argument('--output_dir', type=str, default="/exports/eddie/scratch/s1717425/files",
                     help="Directory to write files to")
 parser.add_argument('--output_type', type=str, default="jsonlines",
                     help="Output file type: trecweb or jsonlines")
@@ -114,6 +115,7 @@ if __name__ == '__main__':
                         "--output type must be 'jsonlines' or 'trecweb'")
                 print(
                     f"--- Done processing MARCO documents in batch number {batch_id} ---")
+                shutil.copy(f"{output_path}/MARCO_{batch_id}.jsonl", "/content/drive/MyDrive/UoE/Data/MARCO")
 
     if not args.skip_process_wapo:
         print("Processing WaPo")
