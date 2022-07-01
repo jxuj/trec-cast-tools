@@ -11,6 +11,6 @@
 source activate trec_cast_tools_env
 
 cd $HOME/workspace/trec-cast-tools/src/main/python
-#chmod +x download_collection.sh
-#./download_collection.sh
+chmod +x download_collection.sh
+./download_collection.sh
 python main.py --output_type jsonlines
