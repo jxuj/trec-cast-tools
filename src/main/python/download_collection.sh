@@ -1,6 +1,6 @@
 echo "Creating collection and duplicates directory..."
-mkdir -p /content/files/raw_collection
-mkdir -p /content/files/duplicates_file
+mkdir -p /exports/eddie/scratch/s1717425/files/raw_collection
+mkdir -p files/duplicates_file
 
 echo "Begin downloading raw collections.."
 
@@ -12,9 +12,9 @@ echo "Begin downloading raw collections.."
 #wget -c http://dl.fbaipublicfiles.com/KILT/kilt_knowledgesource.json -P files/raw_collection
 
 echo "Downloading MARCO V2..."
-wget -c https://msmarco.blob.core.windows.net/msmarcoranking/msmarco_v2_doc.tar -P /exports/eddie/scratch/s1717425//files/raw_collection
+wget -c https://msmarco.blob.core.windows.net/msmarcoranking/msmarco_v2_doc.tar -P /exports/eddie/scratch/s1717425/files/raw_collection
 
 echo "Downloading duplicates file..."
-wget -c https://raw.githubusercontent.com/daltonj/treccastweb/master/2022/duplicate_files/all_duplicates.txt -P /exports/eddie/scratch/s1717425//files/duplicates_file
+wget -c https://raw.githubusercontent.com/daltonj/treccastweb/master/2022/duplicate_files/all_duplicates.txt -P /exports/eddie/scratch/s1717425/files/duplicates_file
 
 echo "Collection Downloaded"
