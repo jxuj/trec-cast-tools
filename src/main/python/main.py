@@ -2,7 +2,7 @@ import argparse
 from hashlib import md5
 from pathlib import Path
 import multiprocessing
-import shutil
+#import shutil
 
 from generators import WaPoGenerator, KILTGenerator, MARCOGenerator
 from passage_chunkers import PassageChunker
@@ -16,7 +16,7 @@ parser.add_argument(
     '--kilt_collection',
     type=str,
     # if collection dowloaded with bash script
-    default="/content/files/raw_collection/kilt_knowledgesource.json",
+    default="files/raw_collection/kilt_knowledgesource.json",
     help="Path to the raw KILT collection"
 )
 
@@ -24,7 +24,7 @@ parser.add_argument(
 parser.add_argument(
     '--marco_v2_collection',
     type=str,
-    default="/content/files/raw_collection/msmarco_v2_doc.tar",
+    default="/exports/eddie/scratch/s1717425/files/raw_collection/msmarco_v2_doc.tar",
     help="Path to compressed MARCO V2 collection"
 )
 
@@ -32,7 +32,7 @@ parser.add_argument(
 parser.add_argument(
     '--wapo_collection',
     type=str,
-    default="/content/files/raw_collection/WashingtonPost.v4.tar.gz",
+    default="files/raw_collection/WashingtonPost.v4.tar.gz",
     help="Path to compressed WaPo collection"
 )
 
@@ -40,7 +40,7 @@ parser.add_argument(
 parser.add_argument(
     '--duplicates_file',
     type=str,
-    default="/content/files/duplicates_file/all_duplicates.txt",
+    default="/exports/eddie/scratch/s1717425/files/duplicates_file/all_duplicates.txt",
     help="Path to duplicates file"
 )
 
@@ -115,7 +115,7 @@ if __name__ == '__main__':
                         "--output type must be 'jsonlines' or 'trecweb'")
                 print(
                     f"--- Done processing MARCO documents in batch number {batch_id} ---")
-                shutil.copy(f"{output_path}/MARCO_{batch_id}.jsonl", "/content/drive/MyDrive/UoE/Data/MARCO")
+                #shutil.copy(f"{output_path}/MARCO_{batch_id}.jsonl", "/content/drive/MyDrive/UoE/Data/MARCO")
 
     if not args.skip_process_wapo:
         print("Processing WaPo")
