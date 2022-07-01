@@ -1,0 +1,15 @@
+#!/bin/bash -l
+
+#$ -cwd
+#$ -S /bin/bash
+#$ -o $HOME/logs
+#$ -e $HOME/logs
+#$ -l h_rt=48:00:00
+#$ -l h_vmem=64G
+
+# Activate the correct conda environment
+source activate trec_cast_tools_env
+
+cd $HOME/workspace/trec-cast-tools/src/main/python
+chmod +x download_collection.sh
+./download_collection.sh
