@@ -9,7 +9,7 @@ echo "Begin downloading raw collections.."
 #wget -c --user TRECWaPoSt --ask-password https://ir.nist.gov/wapo/WashingtonPost.v4.tar.gz -P files/raw_collection
 
 echo "Downloading KILT..."
-wget -c http://dl.fbaipublicfiles.com/KILT/kilt_knowledgesource.json -P files/raw_collection
+wget -c http://dl.fbaipublicfiles.com/KILT/kilt_knowledgesource.json -P /exports/eddie/scratch/s1717425/files/raw_collection
 
 #echo "Downloading MARCO V2..."
 #wget --header "X-Ms-Version: 2019-12-12" https://msmarco.blob.core.windows.net/msmarcoranking/msmarco_v2_doc.tar -P /exports/eddie/scratch/s1717425/files/raw_collection
