@@ -16,7 +16,7 @@ parser.add_argument(
     '--kilt_collection',
     type=str,
     # if collection dowloaded with bash script
-    default="files/raw_collection/kilt_knowledgesource.json",
+    default="/exports/eddie/scratch/s1717425/files/raw_collection/kilt_knowledgesource.json",
     help="Path to the raw KILT collection"
 )
 
@@ -32,7 +32,7 @@ parser.add_argument(
 parser.add_argument(
     '--wapo_collection',
     type=str,
-    default="files/raw_collection/WashingtonPost.v4.tar.gz",
+    default="/exports/eddie/scratch/s1717425/files/raw_collection/WashingtonPost.v4.tar.gz",
     help="Path to compressed WaPo collection"
 )
 
@@ -46,8 +46,8 @@ parser.add_argument(
 
 parser.add_argument('--batch_size', type=int, default=10000,
                     help="Number of documents per batch")
-parser.add_argument('--skip_process_kilt', default=True, action='store_true')
-parser.add_argument('--skip_process_marco', default=False, action='store_true')
+parser.add_argument('--skip_process_kilt', default=False, action='store_true')
+parser.add_argument('--skip_process_marco', default=True, action='store_true')
 parser.add_argument('--skip_process_wapo', default=True, action='store_true')
 parser.add_argument('--output_dir', type=str, default="/exports/eddie/scratch/s1717425/files",
                     help="Directory to write files to")
